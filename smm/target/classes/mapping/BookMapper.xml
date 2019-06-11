@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smm.mapper.BookMapper">
+    <!-- 查询所有 -->
+    <select id="findAll" resultType="com.smm.po.Book">
+        select * from book;
+    </select>
+
+    <!-- 增 -->
+    <insert id="addBook" parameterType="book" >
+        insert into book(bookId,bookName,bookPrice, date) values(#{bookId}, #{bookName}, #{bookPrice}, #{date})
+    </insert>
+
+    <!-- 删 -->
+    <delete id="deleteBook" parameterType="integer">
+       delete from book where bookId=#{bookId}
+    </delete>
+
+    <!-- 改 -->
+    <update id="updateBook" parameterType="book">
+        update book set bookName=#{bookName}, bookPrice=#{bookPrice}, date=#{date} where bookId=#{bookId}
+    </update>
+    
+    <!-- 查一个 -->
+    <select id="findById" parameterType="integer" resultType="book">
+    	select * from book where bookId=#{bookId}
+    </select>
+
+
+</mapper>
